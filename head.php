@@ -13,9 +13,9 @@
 		<figure>
 		<ul class="main-menu menu-ul">
 			<li><a href="index.php">Home</a></li>
-			<li><a href="About-Us.php">About Us</a></li>
 			<li><a href="Browse-Books.php">Browse Books</a></li>
 			<li><a href="My-Books.php">My Books</a></li>
+			<li><a href="About-Us.php">About Us</a></li>
 			<li><a href="Contact.php">Contact</a></li>
 		</ul>
 			<h1><?php 
