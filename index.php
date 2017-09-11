@@ -5,7 +5,9 @@ include("head.php")
 	<main class="float-p">
 		<div class="frontpage-card">
 			<h2>Browse Books</h2>
-			<input type="search" name="find-book" class="search" placeholder="Search your book">
+			<form action="Browse-books.php" method="GET">
+				<input type="search" name="q" class="search" placeholder="Search your book">
+			</form>
 		</div>
 		<div class="frontpage-card">
 			<h2>My Books</h2>

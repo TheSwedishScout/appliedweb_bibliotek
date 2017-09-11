@@ -8,7 +8,12 @@ $page = (pathinfo(__file__)['filename']);
 		
 		<?php
 		$conn = connect_to_db();
-		$sql = "SELECT * FROM books";
+		if(isset($_GET['q'])){
+			$search = test_input($_GET['q']);
+			$sql = "SELECT * FROM books WHERE  `author` LIKE '%$search%' OR `title` LIKE '%$search%'";
+		}else{
+			$sql = "SELECT * FROM books";
+		}
 		$result = $conn->query($sql);
 		
 
@@ -23,23 +28,27 @@ $page = (pathinfo(__file__)['filename']);
 						<p><?php echo $row['author'] ?></p>
 						<p><?php echo $row['description'] ?></p>
 					</div>
-					<button class="reserve">Reserve</button>
+					<button class="reserve" value="<?php echo($row['id']) ?>">Reserve</button>
 				</article>
 
 		    	<?php
 		    }
 		} else {
-		    echo "0 results";
+			if (isset($_GET['q'])) {
+				echo("No books match \" ".test_input($_GET['q']) ."\"");
+			}else{
+		    	echo "Sorry no books in the libary";
+			}
 		}
 		$conn->close();
 		?>
 		
-		<form action="" method="POST">
-			<input type="text" name="Title">
-			<input type="text" name="Sumery">
-			<input type="submit" name="Submit">
+		<form action="" method="GET">
+			<input type="text" name="q" placeholder="Search title or author">
+			<input type="submit" name="Search" value="Search">
 		</form>
 	</main>
+	<script type="text/javascript" src="js/reserv-book.js"></script>
 <?php
 	include("footer.php")
  ?>

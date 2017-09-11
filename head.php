@@ -11,13 +11,19 @@
 	<header>
 		
 		<figure>
-		<ul class="main-menu menu-ul">
-			<li><a href="index.php">Home</a></li>
-			<li><a href="Browse-Books.php">Browse Books</a></li>
-			<li><a href="My-Books.php">My Books</a></li>
-			<li><a href="About-Us.php">About Us</a></li>
-			<li><a href="Contact.php">Contact</a></li>
-		</ul>
+			<ul class="main-menu menu-ul">
+				<li><a class="<?php echo ($page == 'index' ? 'active' : NULL)?>" href="index.php">Home</a></li>
+				<li><a class="<?php echo ($page == 'Browse-Books' ? 'active' : NULL)?>" href="Browse-Books.php">Browse Books</a></li>
+				<li><a class="<?php echo ($page == 'My-Books' ? 'active' : NULL)?>" href="My-Books.php">My Books</a></li>
+				<li><a class="<?php echo ($page == 'About-Us' ? 'active' : NULL)?>" href="About-Us.php">About Us</a></li>
+				<li><a class="<?php echo ($page == 'Contact' ? 'active' : NULL)?>" href="Contact.php">Contact</a></li>
+			</ul>
+			<!--
+			<ul>
+				<li>Registtera</li>
+				<li>logga in</li>
+			</ul>
+			-->
 			<h1><?php 
 			if ($page == "index") {
 				$page = "Home";

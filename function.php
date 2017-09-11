@@ -2,7 +2,7 @@
 
 function test_input($data) {
 
-	global $conn;
+	$conn = connect_to_db();
 
 	$data = trim($data);
 
@@ -13,11 +13,12 @@ function test_input($data) {
 	$data = mysqli_real_escape_string ( $conn , $data );
 
 	return $data;
+	$conn->close();
 
 }
 
 function connect_to_db(){
-	include("sql.php");
+	include_once("config.php");
 	$conn = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die(mysqli_error());
 
 	if ($conn->connect_error) {
