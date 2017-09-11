@@ -140,14 +140,14 @@ header figure{
 
 }
 header figure img{
-	max-height: 600px;
+	max-height: 300px;
 	width: 100%;
 	object-fit: cover;
 }
 
 header figure h1{
 	position: absolute;
-	bottom: 100px;
+	bottom: 10%;
 	left: 0px;
 	background: rgba(0,0,0,0.4);
 	padding: 25px;
