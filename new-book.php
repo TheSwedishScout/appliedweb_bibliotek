@@ -1,0 +1,3 @@
+<?php
+$sql ="INSERT INTO `books` (`id`, `title`, `author`, `description`, `image`) VALUES (NULL, 'Den svavelgula himlen', 'Kjell Westö', 'Och jag gick hemåt och tänkte att jag kanske måste skriva en berättelse trots allt. En berättelse inte bara om Stella och Alex och mig och våra föräldrar, utan också om barnen, om Sandi och Amir och Tommi Hjelt. Och jag tänkte att den berättelsen måste bli mycket sannare än de andra berättelserna jag skrivit. För att vi levde i den tid vi levde i. För att det finns mörker, och för att det finns ljus. Och så nästa motvilliga tanke: att i så fall skulle jag också tvingas möta ljuset och mörkret i mig själv.', 'https://s1.adlibris.com/images/30088801/den-svavelgula-himlen.jpg');"
+?>

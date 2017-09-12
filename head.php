@@ -18,12 +18,12 @@
 				<li><a class="<?php echo ($page == 'About-Us' ? 'active' : NULL)?>" href="About-Us.php">About Us</a></li>
 				<li><a class="<?php echo ($page == 'Contact' ? 'active' : NULL)?>" href="Contact.php">Contact</a></li>
 			</ul>
-			<!--
-			<ul>
+			
+			<ul class="loginAria">
 				<li>Registtera</li>
 				<li>logga in</li>
 			</ul>
-			-->
+			
 			<h1><?php 
 			if ($page == "index") {
 				$page = "Home";

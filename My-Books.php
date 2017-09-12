@@ -13,14 +13,14 @@
 			    // output data of each row
 			    while($row = $result->fetch_assoc()) {
 			    	?>
-						<article class="book">
+						<article class="book" id="book-<?php echo $row['id'];?>">
 							<img class="book-cover" src="<?php echo $row['image'] ?>">
 							<div class="aboute">
 								<h2><?php echo $row['title'] ?></h2>
 								<p><?php echo $row['author'] ?></p>
 								<p><?php echo $row['description'] ?></p>
 							</div>
-							<button class="reserve" value="<?php echo($row['id']) ?>">return</button>
+							<button class="return" value="<?php echo($row['id']) ?>">return</button>
 						</article>
 			    	<?php
 			        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
@@ -28,12 +28,13 @@
 			} else {
 			    ?>
 			    <article>
-			    	<h2>No books in your list. Care to reserve some books <a href="Browse-books.php">Browsez</a></h2>
+			    	<h2>No books in your list. Care to reserve some books <a href="Browse-books.php">Browse</a></h2>
 			    </article>
 			    <?php
 			}
 		?>
 	</main>
+	<script type="text/javascript" src="js/return-book.js"></script>
 <?php
 	include("footer.php")
  ?>

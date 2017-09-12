@@ -157,6 +157,11 @@ header figure h1{
 	background: rgba(0,0,0,0.4);
 	padding: 25px;
 }
+header figure .loginAria{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
 
 /*---------------------------------------------------------------*\
 ||---------------------------------------------------------------||

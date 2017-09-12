@@ -1,18 +1,21 @@
-var buttons = document.getElementsByClassName("reserve");
+var buttons = document.getElementsByClassName("return");
 for (var i = buttons.length - 1; i >= 0; i--) {
 	buttons[i].addEventListener('click', reserv)
 }
 function reserv(e) {
 	e.target.value;
-	postAjax("./reserv-book.php", {'book':e.target.value, 'user':1}, bookUppdated)
+	postAjax("./return-book.php", {'book':e.target.value, 'user':1}, bookUppdated)
 }
 function bookUppdated(response) {
 	var data = JSON.parse(response);
-	for (var i = buttons.length - 1; i >= 0; i--) {
-		if(buttons[i].value == data.book){
-			button = buttons[i];
-			button.parentNode.removeChild(button);
-		}
+	var elem = document.getElementById("book-"+data.book);
+	var parent = elem.parentNode;
+	parent.removeChild(elem);
+	if(parent.childElementCount == 0){
+		var h2 = document.createElement("h2");
+		h2.innerHTML = "No books in your list. Care to reserve some books <a href='Browse-books.php'>Browse</a>";
+		parent.appendChild(h2);
+		debugger;
 	}
 }
 function postAjax(url, data, success) {
