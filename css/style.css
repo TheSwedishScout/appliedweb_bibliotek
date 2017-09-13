@@ -131,6 +131,7 @@ header .main-menu li a{
 	width: 100%;
 	transition:background 1s; 
 	line-height: 35px;
+	border-bottom: 1px solid;
 }
 header .main-menu li a:hover{
 	background: rgba(255,255,255,0.4);
@@ -138,6 +139,8 @@ header .main-menu li a:hover{
 header .main-menu li a.active{
 	background: rgba(255,255,255,1);
 	color:#000;
+	border-top: 1px solid;
+	border-bottom: none;
 }
 header figure{
 	margin:0;
