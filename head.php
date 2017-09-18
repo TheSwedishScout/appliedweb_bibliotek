@@ -23,10 +23,11 @@
 					<li>Registtera</li>
 					<li id="login">logga in</li>
 				</ul>
-				<form id="loginForm" class="hidden" method="POST">
+				<form id="loginForm" class="hidden" action="login_parse.php" method="POST">
 					<input type="text" name="username" placeholder="Username">
 					<input type="password" name="password" placeholder="Password">
 					<input type="submit" name="login" value="Loga in">
+					<input type="hidden" name="page" value="<?php echo $page ?>">
 
 				</form>
 			</div>
