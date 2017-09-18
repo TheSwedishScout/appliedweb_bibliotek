@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])){
 	/*kollar så att inte något fält är tomt*/
 
 	if (!empty($nick) || !empty($password) || !empty($ssn) || !empty($name)){ //Något fält är tomt
-		
+		$conn = connect_to_db();
 		$options = [
 		'cost' => 8
 		];
@@ -24,9 +24,8 @@ if (!isset($_SESSION['user_id'])){
 
 		//insertinge values into mysqli server
 
-		$sql = "INSERT INTO user (ssn, name, username, password)
-
-		VALUES ('$ssn','$name','$nick', '$password_hashed')";
+		$sql = "INSERT INTO user (ssn, name, username, password) VALUES ('$ssn','$name','$nick', '$password_hashed')";
+		//echo($sql);
 		if ($conn->query($sql) === TRUE) { //successfully insertded values to database
 			//echo "Ditt konto är nu sparat.<br>";
 			//session start
@@ -37,8 +36,15 @@ if (!isset($_SESSION['user_id'])){
 			//header("Location: index.php");
 			//exit();
 			$response = ['sucsses' => 'TRUE'];
+		}else{
+			$response['error'] = 'sql error';
+			
 		}
+	}else{
+		$response['error'] = 'something is empty';
 	}
+}else{
+	$response['error'] = 'session is set';
 }
 echo (json_encode($response));
 ?>

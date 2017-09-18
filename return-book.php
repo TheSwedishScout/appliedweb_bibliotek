@@ -1,7 +1,7 @@
 <?php
 	
 	include('function.php');
-
+	session_start();
 	/*Reserv book sent in a post*/
 	/*
 	get user id
@@ -10,11 +10,11 @@
 	input to loandbooks user id and book id
 
 	return a true statement */
-	$book = test_input($_REQUEST['book']);
-	$user = test_input($_REQUEST['user']);
+	$book = test_input($_POST['book']);
+	$user = test_input($_SESSION['user_id']);
 
 	$conn = connect_to_db();
-	$sql = "DELETE FROM loandbooks WHERE user = $user and book = $book limit 1";
+	$sql = "UPDATE `loand` SET `in-date` = NOW() WHERE loand.user = $user AND loand.book = $book;";
 	//$sql = "INSERT INTO `loandbooks` (`id`, `user`, `book`) VALUES (NULL, '$user', '$book');";
 	if ($conn->query($sql) === TRUE) {
 	    $response = ['success' => 'true', 'book'=>$book];

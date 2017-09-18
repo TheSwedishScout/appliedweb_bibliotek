@@ -20,6 +20,7 @@ include("head.php")
 				<input type="password" name="password" placeholder="password">
 				<input type="submit" name="">
 			</form>
+		<?php var_dump($_SESSION); ?>
 		</div>
 	</main>
  <?php

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,14 +21,21 @@
 			</ul>
 			<div class="loginAria">
 				<ul>
+					<?php if (isset($_SESSION['user_id'])){
+						?>
+						<li><a href="singout.php">log out</a></li>
+						<?php
+					}else{?>
 					<li><a href="register.php">Register</a></li>
 					<li id="login">Sign in</li>
+					<?php
+					}
+					?>
 				</ul>
 				<form id="loginForm" class="hidden" action="login_parse.php" method="POST">
 					<input type="text" name="username" placeholder="Username">
 					<input type="password" name="password" placeholder="Password">
 					<input type="submit" name="login" value="Loga in">
-					<input type="hidden" name="page" value="<?php echo $page ?>">
 
 				</form>
 			</div>

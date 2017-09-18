@@ -5,22 +5,24 @@
  ?>
 	<main>
 		<?php
+			$user = $_SESSION['user_id'];
 			$conn = connect_to_db();
-			$sql = "SELECT books.* FROM books, loandbooks WHERE loandbooks.user = 1 AND loandbooks.book = books.id"; //replace "1" whit the users id to get that users books
+			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name , ' ', author.last_name) as authors FROM `books`, author, authorbookconnect, loand WHERE loand.user = $user AND loand.book = books.isbn AND books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id"; //replace "1" whit the users id to get that users books
 			$result = $conn->query($sql);
 			
 			if ($result->num_rows > 0) {
 			    // output data of each row
 			    while($row = $result->fetch_assoc()) {
 			    	?>
-						<article class="book" id="book-<?php echo $row['id'];?>">
+						<article class="book" id="book-<?php echo $row['isbn'];?>">
 							<img class="book-cover" src="<?php echo $row['image'] ?>">
 							<div class="aboute">
 								<h2><?php echo $row['title'] ?></h2>
-								<p><?php echo $row['author'] ?></p>
-								<p><?php echo $row['description'] ?></p>
+								
+								<p><?php  echo $row['authors'] ?></p>
+								<p><?php echo $row['ingress'] ?></p>
 							</div>
-							<button class="return" value="<?php echo($row['id']) ?>">return</button>
+							<button class="return" value="<?php echo($row['isbn']) ?>">return</button>
 						</article>
 			    	<?php
 			        //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";

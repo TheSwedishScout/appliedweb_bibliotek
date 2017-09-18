@@ -12,21 +12,24 @@ $page = (pathinfo(__file__)['filename']);
 			$search = test_input($_GET['q']);
 			
 			$search = str_replace(" ", "%", $search);
-			$sql = "SELECT * FROM books WHERE  `author` LIKE '%$search%' OR `title` LIKE '%$search%'";
+			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND `title` LIKE '%$search%' GROUP BY books.isbn";
 		}else{
-			$sql = "SELECT * FROM books";
+			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id GROUP BY books.isbn";
 		}
 		$result = $conn->query($sql);
-
+		//var_dump($sql);
 		//Get users books to remove reserv button
-		$sql2= "SELECT book FROM `loandbooks` WHERE user = 1";
-		$result2 = $conn->query($sql2);
-		$usersBooks = [];
-		if ($result2->num_rows > 0) {
-		    // output data of each row
-		    while($row2 = $result2->fetch_assoc()) {
-		    	$usersBooks[] = $row2['book'];
-		    }
+		if(isset($_SESSION['user_id'])){
+			$user = $_SESSION['user_id'];
+			$sql2= "SELECT book FROM `loand` WHERE user = '$user'";
+			$result2 = $conn->query($sql2);
+			$usersBooks = [];
+			if ($result2->num_rows > 0) {
+			    // output data of each row
+			    while($row2 = $result2->fetch_assoc()) {
+			    	$usersBooks[] = $row2['book'];
+			    }
+			}
 		}
 
 		if ($result->num_rows > 0) {
@@ -37,14 +40,17 @@ $page = (pathinfo(__file__)['filename']);
 					<img class="book-cover" src="<?php echo $row['image'] ?>">
 					<div class="aboute">
 						<h2><?php echo $row['title'] ?></h2>
-						<p><?php echo $row['author'] ?></p>
-						<p><?php echo $row['description'] ?></p>
+						<p><?php echo $row['authors'] ?></p>
+						<p><?php echo $row['ingress'] ?></p>
 					</div>
-					<?php if(!in_array($row['id'], $usersBooks)){
+					<?php 
+					if(isset($_SESSION['user_id'])){
+						if(!in_array($row['isbn'], $usersBooks)){
 							?>
-								<button class="reserve" value="<?php echo($row['id']) ?>">Reserve</button>
+								<button class="reserve" value="<?php echo($row['isbn']) ?>">Reserve</button>
 							<?php
-						} ?>
+						}
+					} ?>
 				</article>
 
 		    	<?php
