@@ -93,8 +93,16 @@ main{
 	overflow: hidden;
 }
 .container{
-	width: 1200px;
+	width: 100%;
+	max-width: 1200px;
 	margin:0 auto;
+
+}
+.hidden{
+	display: none;
+}
+.visabale{
+	display: block;
 }
 /*-----------------------------------------------------------------*\
 ||-----------------------------------------------------------------||
@@ -115,7 +123,10 @@ header .main-menu{
 }
 header .main-menu li{
 	flex-grow:1;
-	transition: flex-grow 1s;
+	transition: flex-grow 0.4s;
+}
+header .main-menu li.active{
+	flex-grow:1.4;
 }
 header .main-menu li:not(:last-child){
 	border-right: 1px solid #000;
@@ -129,14 +140,14 @@ header .main-menu li a{
 	padding: 7px 0px;
 	background: rgba(255,255,255,0.2);
 	width: 100%;
-	transition:background 1s; 
+	transition:background 0.4s; 
 	line-height: 35px;
 	border-bottom: 1px solid;
 }
 header .main-menu li a:hover{
 	background: rgba(255,255,255,0.4);
 }
-header .main-menu li a.active{
+header .main-menu li.active a{
 	background: rgba(255,255,255,1);
 	color:#000;
 	border-top: 1px solid;
@@ -160,12 +171,25 @@ header figure h1{
 	background: rgba(0,0,0,0.4);
 	padding: 25px;
 }
-header figure .loginAria{
+header figure .loginAria {
 	position: absolute;
 	right: 10px;
 	top: 10px;
 }
-
+header figure .loginAria li{
+	float: left;
+	padding-left: 1em;
+}
+#loginForm{
+	position: absolute;
+	right: 0px;
+	top: 1.2em;
+	background: #777;
+	padding: 10px;
+}
+#loginForm input:not(:last-child){
+	margin-bottom: 10px;	
+}
 /*---------------------------------------------------------------*\
 ||---------------------------------------------------------------||
 ||-----------------------------MAIN------------------------------||
@@ -189,7 +213,7 @@ header figure .loginAria{
 	margin-left: 5px;
 	max-width: 84%;
 }
-.book .reserve{
+.book .reserve, .book .return{
 	float: right;
 	display: block;
 	text-align: center;

@@ -28,6 +28,10 @@
 		</div>
 		<small>Copyright Max Timje 2017- <?php echo date("Y"); ?></small>
 	</footer>
-</div>	
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<?php
+unset($_POST);
+?>
 </body>
 </html>

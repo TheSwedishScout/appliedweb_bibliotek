@@ -12,17 +12,24 @@
 		
 		<figure>
 			<ul class="main-menu menu-ul">
-				<li><a class="<?php echo ($page == 'index' ? 'active' : NULL)?>" href="index.php">Home</a></li>
-				<li><a class="<?php echo ($page == 'Browse-Books' ? 'active' : NULL)?>" href="Browse-Books.php">Browse Books</a></li>
-				<li><a class="<?php echo ($page == 'My-Books' ? 'active' : NULL)?>" href="My-Books.php">My Books</a></li>
-				<li><a class="<?php echo ($page == 'About-Us' ? 'active' : NULL)?>" href="About-Us.php">About Us</a></li>
-				<li><a class="<?php echo ($page == 'Contact' ? 'active' : NULL)?>" href="Contact.php">Contact</a></li>
+				<li class="<?php echo ($page == 'index' ? 'active' : NULL)?>"><a  href="index.php">Home</a></li>
+				<li class="<?php echo ($page == 'Browse-Books' ? 'active' : NULL)?>"><a  href="Browse-Books.php">Browse Books</a></li>
+				<li class="<?php echo ($page == 'My-Books' ? 'active' : NULL)?>"><a href="My-Books.php">My Books</a></li>
+				<li class="<?php echo ($page == 'About-Us' ? 'active' : NULL)?>"><a href="About-Us.php">About Us</a></li>
+				<li class="<?php echo ($page == 'Contact' ? 'active' : NULL)?>"><a href="Contact.php">Contact</a></li>
 			</ul>
-			
-			<ul class="loginAria">
-				<li>Registtera</li>
-				<li>logga in</li>
-			</ul>
+			<div class="loginAria">
+				<ul>
+					<li>Registtera</li>
+					<li id="login">logga in</li>
+				</ul>
+				<form id="loginForm" class="hidden" method="POST">
+					<input type="text" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
+					<input type="submit" name="login" value="Loga in">
+
+				</form>
+			</div>
 			
 			<h1><?php 
 			if ($page == "index") {

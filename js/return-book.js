@@ -15,7 +15,6 @@ function bookUppdated(response) {
 		var h2 = document.createElement("h2");
 		h2.innerHTML = "No books in your list. Care to reserve some books <a href='Browse-books.php'>Browse</a>";
 		parent.appendChild(h2);
-		debugger;
 	}
 }
 function postAjax(url, data, success) {
