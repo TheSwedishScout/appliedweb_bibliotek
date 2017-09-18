@@ -5,6 +5,13 @@
     	//e.target.removeEventListener('click', loginView);
     }
 
-
+    document.getElementById('login-regP').addEventListener('submit', function(e){
+    	e.preventDefault()
+    	debugger
+    });
+    document.getElementById('register-regP').addEventListener('submit', function(e){
+    	e.preventDefault()
+    	debugger
+    })
 
   });

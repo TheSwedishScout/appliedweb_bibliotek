@@ -4,6 +4,7 @@
 //$username = $_POST['username'];
 
 include ("function.php");
+var_dump($_POST);
 
 if (!isset($_SESSION['user_id'])){
     
@@ -14,7 +15,7 @@ if (!isset($_SESSION['user_id'])){
     
 
     $sql = "SELECT password, user_lvl FROM `user` WHERE `username` = '$username'";
-    
+    $conn = connect_to_db();
     $result = $conn->query($sql);
         //var_dump($result);
         if ($result->num_rows > 0) {

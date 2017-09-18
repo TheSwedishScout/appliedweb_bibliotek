@@ -20,8 +20,8 @@
 			</ul>
 			<div class="loginAria">
 				<ul>
-					<li>Registtera</li>
-					<li id="login">logga in</li>
+					<li><a href="register.php">Register</a></li>
+					<li id="login">Sign in</li>
 				</ul>
 				<form id="loginForm" class="hidden" action="login_parse.php" method="POST">
 					<input type="text" name="username" placeholder="Username">
@@ -36,7 +36,7 @@
 			if ($page == "index") {
 				$page = "Home";
 			}
-			echo str_replace("-", " ", $page);
+			echo ucwords(str_replace("-", " ", $page));
 			?></h1>
 			<img class="header-image" src="images/titel1.jpg">
 		</figure>
