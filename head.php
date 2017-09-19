@@ -23,11 +23,12 @@
 				<ul>
 					<?php if (isset($_SESSION['user_id'])){
 						?>
+						<li>Hi, <?php echo $_SESSION['user_name'];?></li> 
 						<li><a href="singout.php">log out</a></li>
 						<?php
 					}else{?>
 					<li><a href="register.php">Register</a></li>
-					<li id="login">Sign in</li>
+					<li id="login"><a href="#">Sign in</a></li>
 					<?php
 					}
 					?>

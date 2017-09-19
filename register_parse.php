@@ -10,13 +10,14 @@ if (!isset($_SESSION['user_id'])){
 	$password = test_input($_POST['password']);
 	$ssn = test_input($_POST['ssn']);
 	$name = test_input($_POST['name']);
+	$email = test_input($_POST['email']);
 
 	/*kollar så att inte något fält är tomt*/
 
 	if (!empty($nick) || !empty($password) || !empty($ssn) || !empty($name)){ //Något fält är tomt
 		$conn = connect_to_db();
 		$options = [
-		'cost' => 8
+		'cost' => 10
 		];
 		$password_hashed = password_hash($password, PASSWORD_BCRYPT, $options);
 		unset($password);
@@ -24,7 +25,7 @@ if (!isset($_SESSION['user_id'])){
 
 		//insertinge values into mysqli server
 
-		$sql = "INSERT INTO user (ssn, name, username, password) VALUES ('$ssn','$name','$nick', '$password_hashed')";
+		$sql = "INSERT INTO user (ssn, name, username, password, email) VALUES ('$ssn','$name','$nick', '$password_hashed', '$email')";
 		//echo($sql);
 		if ($conn->query($sql) === TRUE) { //successfully insertded values to database
 			//echo "Ditt konto är nu sparat.<br>";

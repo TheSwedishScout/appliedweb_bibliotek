@@ -12,7 +12,7 @@ $page = (pathinfo(__file__)['filename']);
 			$search = test_input($_GET['q']);
 			
 			$search = str_replace(" ", "%", $search);
-			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND `title` LIKE '%$search%' GROUP BY books.isbn";
+			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND (`title` LIKE '%$search%' OR author.first_name LIKE '%$search%') GROUP BY books.isbn";
 		}else{
 			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id GROUP BY books.isbn";
 		}
@@ -21,7 +21,7 @@ $page = (pathinfo(__file__)['filename']);
 		//Get users books to remove reserv button
 		if(isset($_SESSION['user_id'])){
 			$user = $_SESSION['user_id'];
-			$sql2= "SELECT book FROM `loand` WHERE user = '$user'";
+			$sql2= "SELECT loand.* FROM `loand` WHERE user = $user AND (in_date > CURRENT_DATE() OR in_date != CURRENT_DATE OR in_date IS NULL)";
 			$result2 = $conn->query($sql2);
 			$usersBooks = [];
 			if ($result2->num_rows > 0) {
@@ -31,6 +31,7 @@ $page = (pathinfo(__file__)['filename']);
 			    }
 			}
 		}
+		
 
 		if ($result->num_rows > 0) {
 		    // output data of each row

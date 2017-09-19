@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])){
 
     
 
-    $sql = "SELECT password, 'user-lvl', ssn FROM `user` WHERE `username` = '$username'";
+    $sql = "SELECT password, user_lvl, ssn, name FROM `user` WHERE `username` = '$username' OR email = '$username'";
     //echo($sql);
     $conn = connect_to_db();
     $result = $conn->query($sql);
@@ -31,11 +31,12 @@ if (!isset($_SESSION['user_id'])){
             if (password_verify($password, $password_hashed)) {
                 //echo 'Password is valid!';
                 $_SESSION['user_id'] = $row['ssn'];
-                $_SESSION['user_lvl'] = $row['user-lvl'];
+                $_SESSION['user_lvl'] = $row['user_lvl'];
+                $_SESSION['user_name'] = $row['name'];
                 //send to start peage
                 //header("Location: $pre_page");
                 //exit;
-                echo (json_encode(['sucsess'=> true]));
+                echo (json_encode(['sucsess'=> true, 'user_name' => $row['name']]));
             } else {
                 echo (json_encode(['sucsess'=> false, 'error' =>"username or password incorect"]));
                 

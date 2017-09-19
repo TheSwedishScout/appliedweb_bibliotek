@@ -16,7 +16,7 @@ $page = (pathinfo(__file__)['filename']);
 			<p>Phasellus eget ultrices ex. Morbi blandit cursus odio, ut mollis lacus tempor vitae. In hac habitasse platea dictumst. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur viverra libero ipsum, a mollis velit lacinia eu. Etiam nec diam id nisl viverra porttitor et quis erat. Aliquam suscipit magna eu sapien auctor viverra.</p>
 
 			<p>Donec dapibus leo et ornare accumsan. Etiam laoreet risus a velit varius, sed imperdiet ligula tempor. Vestibulum viverra risus sed felis maximus, quis lobortis urna aliquam. Maecenas tincidunt sapien id odio aliquam, sed ornare urna congue. Maecenas eget volutpat arcu, ut hendrerit dolor. Curabitur ac nisi quis diam commodo cursus sed eget urna. Nullam odio arcu, hendrerit sit amet vulputate id, feugiat quis orci. Nullam sagittis posuere dignissim. Aliquam malesuada neque nulla, vitae interdum lorem porttitor tristique.</p>
-		S</div>
+		</div>
 	</main>
 <?php
 	include("footer.php")

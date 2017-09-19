@@ -15,7 +15,7 @@
             if (data.sucsess){
                 user.value = "";
                 pass.value = "";
-                login[0].innerHTML= '<li><a href="singout.php">log out</a></li>';;
+                login[0].innerHTML= '<li>Hi, '+data.user_name+'</li><li><a href="singout.php">log out</a></li>';
                 login[1].classList.add('hidden');
             }else{
                 var errorMSG = document.createElement('p');
@@ -34,7 +34,7 @@
                 user.value = "";
                 pass.value = "";
                 var login = document.getElementsByClassName('loginAria')[0].children
-                login[0].innerHTML= '<li><a href="singout.php">log out</a></li>';;
+                login[0].innerHTML= '<li>Hi, '+data.user_name+'</li><li><a href="singout.php">log out</a></li>';
                 login[1].classList.add('hidden');
             }
         })
@@ -46,11 +46,14 @@
         let pass = this.children['password'];
         let ssn = this.children['ssn'];
         let name = this.children['name'];
-    	postAjax('register_parse.php', {"username":user.value, "password":pass.value, "ssn":ssn.value, "name":name.value}, function (data) {
+        let email = this.children['email'];
+    	postAjax('register_parse.php', {"username":user.value, "password":pass.value, "ssn":ssn.value, "name":name.value, "email":email.value}, function (data) {
+            //MSG Acount Created
             user.value = ""
             pass.value = ""
             ssn.value = ""
             name.value = ""
+            email.value = ""
             debugger;
         })
     })
