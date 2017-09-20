@@ -1,9 +1,9 @@
 <?php
 	include("function.php");+9+99
 	$to = "max@timje.se";
-	$subject = test_input_noDB($_POST["Subject"]);
-	$message = test_input_noDB($_POST["message"]);
-	$from = test_input_noDB($_POST["email"]);
+	$subject = test_input($_POST["Subject"]);
+	$message = test_input($_POST["message"]);
+	$from = test_input($_POST["email"]);
 	$headers = "From: $from  \r\n".
 				"Reply-To: $from \r\n".
 				"X-Mailer: PHP/".phpversion();
@@ -13,3 +13,4 @@
 	header("location: http://localhost/labar/applied/lab1/Contact.php");
 	exit();
 ?>
+ 

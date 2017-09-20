@@ -31,7 +31,7 @@ $page = (pathinfo(__file__)['filename']);
 			    }
 			}
 		}
-		
+
 
 		if ($result->num_rows > 0) {
 		    // output data of each row
@@ -40,7 +40,7 @@ $page = (pathinfo(__file__)['filename']);
 				<article class="book">
 					<img class="book-cover" src="<?php echo $row['image'] ?>">
 					<div class="aboute">
-						<h2><?php echo $row['title'] ?></h2>
+						<h2><a href="book.php?book=<?php echo $row['isbn'];?>"><?php echo $row['title'] ?></a></h2>
 						<p><?php echo $row['authors'] ?></p>
 						<p><?php echo $row['ingress'] ?></p>
 					</div>

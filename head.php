@@ -1,9 +1,14 @@
-<?php session_start(); ?>
+<?php session_start();
+$print_page = $page;
+if ($print_page == "index") {
+	$print_page = "Home";
+}
+$print_page  = ucwords(str_replace("-", " ", $print_page)); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>MT Book club</title>
+	<title><?php echo $print_page?> Book club</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -42,10 +47,7 @@
 			</div>
 			
 			<h1><?php 
-			if ($page == "index") {
-				$page = "Home";
-			}
-			echo ucwords(str_replace("-", " ", $page));
+			echo $print_page;
 			?></h1>
 			<img class="header-image" src="images/titel1.jpg">
 		</figure>

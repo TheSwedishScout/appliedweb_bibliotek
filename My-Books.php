@@ -5,6 +5,7 @@
  ?>
 	<main>
 		<?php
+		if(isset($_SESSION['user_id'])){
 			$user = $_SESSION['user_id'];
 			$conn = connect_to_db();
 			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) AS authors FROM `books`, author, authorbookconnect, loand WHERE loand.user = $user AND loand.book = books.isbn AND books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND (in_date > CURRENT_DATE() OR in_date IS NULL) GROUP BY books.isbn"; //replace "1" whit the users id to get that users books
@@ -34,6 +35,7 @@
 			    </article>
 			    <?php
 			}
+		}
 		?>
 	</main>
 	<script type="text/javascript" src="js/return-book.js"></script>
