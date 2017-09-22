@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])){
 
 	/*kollar så att inte något fält är tomt*/
 
-	if (!empty($nick) || !empty($password) || !empty($ssn) || !empty($name)){ //Något fält är tomt
+	if (!empty($nick) || !empty($password) || !empty($ssn) || !empty($name) || !empty($email) && isEmail($email)){ //Något fält är tomt
 		$conn = connect_to_db();
 		$options = [
 		'cost' => 10
