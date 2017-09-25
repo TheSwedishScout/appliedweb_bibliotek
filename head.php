@@ -1,4 +1,14 @@
-<?php session_start();
+<?php 
+ini_set('session.cookie_httponly', true);
+session_start();
+if(isset($_SESSION['userip'])){
+	if ($_SESSION['userip'] !== $_SERVER['REMOTE_ADDR']){
+	    #if it is not the same, we just remove all session variables
+	    #this way the attacker will have no session
+	    session_unset();
+	    session_destroy();   
+	}
+}
 $print_page = $page;
 if ($print_page == "index") {
 	$print_page = "Home";

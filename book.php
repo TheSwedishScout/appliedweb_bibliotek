@@ -52,6 +52,7 @@
 		}
 	?>
 </main>
+<script type="text/javascript" src="js/reserv-book.js"></script>
 <?php
 	include ('footer.php');
 ?>

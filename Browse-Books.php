@@ -21,7 +21,7 @@ $page = (pathinfo(__file__)['filename']);
 		//Get users books to remove reserv button
 		if(isset($_SESSION['user_id'])){
 			$user = $_SESSION['user_id'];
-			$sql2= "SELECT loand.* FROM `loand`, books WHERE books.isbn = loand.isbn AND ";
+			$sql2= "SELECT loand.* FROM loand WHERE loand.user = '{$user}' AND in_date IS NULL ";
 			$result2 = $conn->query($sql2);
 			$usersBooks = [];
 			if ($result2->num_rows > 0) {

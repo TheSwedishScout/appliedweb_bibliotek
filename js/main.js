@@ -36,6 +36,8 @@
                 var login = document.getElementsByClassName('loginAria')[0].children
                 login[0].innerHTML= '<li>Hi, '+data.user_name+'</li><li><a href="singout.php">log out</a></li>';
                 login[1].classList.add('hidden');
+                debugger;
+                window.location.replace("gallery.php");
             }
         })
     });

@@ -33,6 +33,7 @@ if (!isset($_SESSION['user_id'])){
                 $_SESSION['user_id'] = $row['ssn'];
                 $_SESSION['user_lvl'] = $row['user_lvl'];
                 $_SESSION['user_name'] = $row['name'];
+                $_SESSION['userip'] = $_SERVER['REMOTE_ADDR'];
                 //send to start peage
                 //header("Location: $pre_page");
                 //exit;
