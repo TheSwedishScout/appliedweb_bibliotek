@@ -14,8 +14,11 @@
 	$user = test_input($_SESSION['user_id']);
 
 	$conn = connect_to_db();
-	$sql = "INSERT INTO `loand` (`user`, `book`, `out_date`) VALUES ('$user', '$book', NOW());";
-	if ($conn->query($sql) === TRUE) {
+	$sql = "INSERT INTO `loand` (`user`, `book`, `out_date`) VALUES (?, ?, NOW());";
+	$stmt = $conn->prepare($sql);
+		    $stmt->bind_param("ss", $user, $book);
+		    
+	if ($stmt->execute() === TRUE) {
 	    $response = ['success' => 'true', 'book'=>$book];
 	} else {
 	    $response = ['success' => 'false', "Error:" => $conn->error];

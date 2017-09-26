@@ -25,9 +25,12 @@ if (!isset($_SESSION['user_id'])){
 
 		//insertinge values into mysqli server
 
-		$sql = "INSERT INTO user (ssn, name, username, password, email) VALUES ('$ssn','$name','$nick', '$password_hashed', '$email')";
 		//echo($sql);
-		if ($conn->query($sql) === TRUE) { //successfully insertded values to database
+		$stmt = $conn->prepare("INSERT INTO user (ssn, name, username, password, email) VALUES (?,?,?,?,?)");
+	    $stmt->bind_param("sssss", $ssn, $name, $nick, $password_hashed, $email);
+	    //$stmt->execute();
+	    //$result = $stmt->get_result();
+		if ($stmt->execute() === TRUE) { //successfully insertded values to database
 			//echo "Ditt konto är nu sparat.<br>";
 			//session start
 			//echo "Du kan nu lägga in deltagare i våra listor.<br>";

@@ -16,10 +16,13 @@ if (!isset($_SESSION['user_id'])){
 
     
 
-    $sql = "SELECT password, user_lvl, ssn, name FROM `user` WHERE `username` = '$username' OR email = '$username'";
+    $sql = "SELECT password, user_lvl, ssn, name FROM `user` WHERE `username` = ? OR email = ?";
     //echo($sql);
     $conn = connect_to_db();
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $username, $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
         //var_dump($result);
 
         if ($result->num_rows > 0) {

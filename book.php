@@ -6,16 +6,21 @@
 <main>
 	<?php
 		$book = test_input($_GET['book']);
-		$conn= connect_to_db();
+		$conn = connect_to_db();
 
-		$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND books.isbn = $book GROUP BY books.isbn";
-		$result = $conn->query($sql);
+		$stmt = $conn->prepare("SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND books.isbn = ? GROUP BY books.isbn");
+		$stmt->bind_param("s", $book);
+		$stmt->execute();
+		$result = $stmt->get_result();
 		//var_dump($sql);
 		//Get users books to remove reserv button
 		if(isset($_SESSION['user_id'])){
 			$user = $_SESSION['user_id'];
-			$sql2= "SELECT loand.* FROM `loand` WHERE user = $user AND (in_date > CURRENT_DATE() OR in_date != CURRENT_DATE OR in_date IS NULL)";
-			$result2 = $conn->query($sql2);
+			$stmt2 = $conn->prepare("SELECT loand.* FROM `loand` WHERE user = ? AND (in_date > CURRENT_DATE() OR in_date != CURRENT_DATE OR in_date IS NULL)");
+			$stmt2->bind_param("s", $user);
+			$stmt2->execute();
+			$result2 = $stmt2->get_result();
+			//$result2 = $conn->query($sql2);
 			$usersBooks = [];
 			if ($result2->num_rows > 0) {
 			    // output data of each row

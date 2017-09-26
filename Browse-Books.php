@@ -11,18 +11,27 @@ $page = (pathinfo(__file__)['filename']);
 		if(isset($_GET['q'])){
 			$search = test_input($_GET['q']);
 			
-			$search = str_replace(" ", "%", $search);
-			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND (`title` LIKE '%$search%' OR author.first_name LIKE '%$search%') GROUP BY books.isbn";
+			$search = "%".str_replace(" ", "%", $search)."%";
+			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id AND (`title` LIKE ? OR author.first_name LIKE ?) GROUP BY books.isbn";
+			$stmt = $conn->prepare($sql);
+			$stmt->bind_param("ss", $search, $search);
+			$stmt->execute();
+			$result = $stmt->get_result();
 		}else{
 			$sql = "SELECT books.*, GROUP_CONCAT(author.first_name) as authors FROM `books`, author, authorbookconnect WHERE books.isbn = authorbookconnect.book AND authorbookconnect.author = author.id GROUP BY books.isbn";
+			$result = $conn->query($sql);
 		}
-		$result = $conn->query($sql);
 		//var_dump($sql);
 		//Get users books to remove reserv button
 		if(isset($_SESSION['user_id'])){
 			$user = $_SESSION['user_id'];
-			$sql2= "SELECT loand.* FROM loand WHERE loand.user = '{$user}' AND in_date IS NULL ";
-			$result2 = $conn->query($sql2);
+			$sql2= "SELECT loand.* FROM loand WHERE loand.user = ? AND in_date IS NULL ";
+			$stmt2 = $conn->prepare($sql2);
+			$stmt2->bind_param("s", $user);
+			$stmt2->execute();
+			$result2 = $stmt2->get_result();
+
+			//$result2 = $conn->query($sql2);
 			$usersBooks = [];
 			if ($result2->num_rows > 0) {
 			    // output data of each row
