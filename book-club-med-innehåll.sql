@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 20 sep 2017 kl 14:55
+-- Tid vid skapande: 28 sep 2017 kl 11:59
 -- Serverversion: 5.7.11
 -- PHP-version: 5.6.19
 
@@ -112,14 +112,32 @@ CREATE TABLE `loand` (
 --
 
 INSERT INTO `loand` (`id`, `user`, `book`, `out_date`, `in_date`) VALUES
-(12, '9405034670', '9789146233794', '2017-09-19', '2017-09-19'),
-(14, '9405034670', '646154', '2017-09-19', '2017-09-19'),
-(15, '9405034670', '646154', '2017-09-19', '2017-09-19'),
-(16, '9405034670', '646154', '2017-09-19', '2017-09-19'),
-(20, '9405034670', '646154', '2017-09-19', '2017-09-19'),
-(21, '9405034670', '646154', '2017-09-19', '2017-09-19'),
-(23, '9405034670', '9789146233794', '2017-09-19', '2017-09-19'),
-(27, '6004084242', '9789146233794', '2017-09-20', '2017-09-20');
+(37, '9405034670', '2123903523523', '2017-09-01', '2017-09-27'),
+(38, '9405034670', '646154', '2017-09-22', '2017-09-27'),
+(39, '9405034670', '9789146233794', '2017-09-23', '2017-09-27'),
+(40, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(41, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(42, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(43, '9405034670', '9789146233794', '2017-09-25', '2017-09-27'),
+(44, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(45, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(46, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(47, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(48, '9405034670', '9789146233794', '2017-09-25', '2017-09-27'),
+(49, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(50, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(51, '9405034670', '9789146233794', '2017-09-25', '2017-09-27'),
+(52, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(53, '9405034670', '2123903523523', '2017-09-25', '2017-09-27'),
+(54, '9405034670', '646154', '2017-09-25', '2017-09-27'),
+(55, '9405034670', '9789146233794', '2017-09-26', '2017-09-27'),
+(56, '156156156', '646154', '2017-09-26', '2017-09-26'),
+(57, '156156156', '2123903523523', '2017-09-26', '2017-09-26'),
+(58, '156156156', '646154', '2017-09-26', NULL),
+(59, '9405034670', '2123903523523', '2017-09-26', '2017-09-27'),
+(60, '9405034670', '646154', '2017-09-27', '2017-09-27'),
+(61, '9405034670', '9789146233794', '2017-09-27', '2017-09-27'),
+(62, '9405034670', '2123903523523', '2017-09-27', '2017-09-27');
 
 -- --------------------------------------------------------
 
@@ -147,17 +165,20 @@ CREATE TABLE `user` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `user_lvl` int(3) NOT NULL DEFAULT '0'
+  `user_lvl` int(3) NOT NULL DEFAULT '0',
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumpning av Data i tabell `user`
 --
 
-INSERT INTO `user` (`ssn`, `name`, `username`, `password`, `email`, `user_lvl`) VALUES
-('1466664545', 'dsmk', 'hittaNemo', '$2y$08$73PPziCm1uzZXEhtuCTEueXyrNNDuDpA8w4Q81Cw5oGhsptXu5qey', '', 0),
-('6004084242', 'håkan Timje', 'Ejmith', '$2y$08$FkBcRsppxqprHgtta2SVneEh9/qjKLYhp95EezPsMUKJIRIaBA/Py', 'hakan@timje.se', 0),
-('9405034670', 'Max Timje', 'theSwedishScout', '$2y$08$Ec5D.vor0Rzh7JW6w0EKoeDaq64AgdR3cjI/tACej8Y7D22hAbsxG', 'max@timje.se', 3);
+INSERT INTO `user` (`ssn`, `name`, `username`, `password`, `email`, `user_lvl`, `image`) VALUES
+('1466664545', 'dsmk', 'hittaNemo', '$2y$08$73PPziCm1uzZXEhtuCTEueXyrNNDuDpA8w4Q81Cw5oGhsptXu5qey', '', 0, NULL),
+('156156156', 'vned', 'mrMorris', '$2y$10$xUXqjQkUoVTe4WhTA5BTMuzBddpPxvj6kXlaxE7lZXIt0Ag4FBO0C', 'morr@iste.com', 0, NULL),
+('1995556156', 'test erik', 'mullamur', '$2y$10$.5vVZfPSdRBRD24ymMP05eNTYPH2jQMIL5B2BuXHC55wP4hIH5xxa', 'hittapa@max.se', 0, NULL),
+('6004084242', 'håkan Timje', 'Ejmith', '$2y$08$FkBcRsppxqprHgtta2SVneEh9/qjKLYhp95EezPsMUKJIRIaBA/Py', 'hakan@timje.se', 0, NULL),
+('9405034670', 'Max Timje', 'theSwedishScout', '$2y$08$Ec5D.vor0Rzh7JW6w0EKoeDaq64AgdR3cjI/tACej8Y7D22hAbsxG', 'max@timje.se', 3, NULL);
 
 --
 -- Index för dumpade tabeller
@@ -225,7 +246,7 @@ ALTER TABLE `authorbookconnect`
 -- AUTO_INCREMENT för tabell `loand`
 --
 ALTER TABLE `loand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT för tabell `reviews`
 --
