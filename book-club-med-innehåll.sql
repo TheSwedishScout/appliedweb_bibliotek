@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: 127.0.0.1
--- Tid vid skapande: 28 sep 2017 kl 11:59
+-- Tid vid skapande: 02 okt 2017 kl 14:30
 -- Serverversion: 5.7.11
 -- PHP-version: 5.6.19
 

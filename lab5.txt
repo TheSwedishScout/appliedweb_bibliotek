@@ -1,0 +1,27 @@
+Task 1 - Describe REST APIs and GIT
+------------------------------------------------------
+
+RESTful apis
+whit a rest API its makes it easier to develop not only a webpage but apps as well whirt the information from the same system and the clients dosent have to be in the same langush, in most (if not all) programing langushes thare is a way to do a html request and get data  from an API whitch sends the respons in a way that the client program are abel to decode it to its own as a json string can be converted to a JS object or in PHP an assosiative array or a class. a RESTful API is not only able to use the GET request but all the metods as DELETE and POST to update information and delete information. 
+
+------------------------------------------------------
+GIT
+Git is a version controll system that allows that you edit files and re commit them as a new version. whit GIT you can roolback to a previs version if the fix is more a bug then a fix. connected to something like github a group can work allong side each other and commit thers edits and merge them together. there are olso the posebility to branch of and build a ather part that while buildig whold conflit the other build. 
+
+------------------------------------------------------
+
+Task 2 – REST API in your project
+------------------------------------------------------
+
+having a API for this project wuld make it easier to develop a mobile app to grab the pizzerias and theres pizzas, includeing the users in the api whuld make it possibale to have one acout that are able to login ib every device and get there preferenses. I wuld say that i wuld like to build an API for the project that wuld help building the webpage.
+
+a start of the api wuld look something like this:
+Get api/ingredients returns a list of all ingredients
+Get api/pizzas/:array_chosen_ingredients return top 10 pizzaz matching the choice whit like{pizzas[{id: 334235, pizzeria:2341, name: Margareta, ingredients:[ost, tomat, skinka], pris:75kr},{id: 156156, pizzeria:2340, name: Margareta, ingredients:[ost, tomat, skinka], pris:75kr}]}
+get api/pizzeria/:id return information about the pizzeria as location name if hase glutenfree option etc
+get api/pizzeria/:id/list returns a list of the pizzerias pizzas in order as the number in thers menue.
+get api/u/:userid/favorites whit oath option to get the users favorites pizza
+post api/u/:userid/favorites/:pizzaid adds a favorite pizza in users list
+delete api/u/:userid/favorites/:pizzaid remove a favorite pizza in users list
+
+
