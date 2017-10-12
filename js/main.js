@@ -9,7 +9,7 @@
         e.preventDefault()
         let user = this.children['username'];
         let pass = this.children['password'];
-        postAjax('login_parse.php', {"username":user.value, "password":pass.value, 'page': "register"}, function(data){
+        postAjax('assets/login_parse.php', {"username":user.value, "password":pass.value, 'page': "register"}, function(data){
             var login = document.getElementsByClassName('loginAria')[0].children
             var data = JSON.parse(data);
             if (data.sucsess){
@@ -28,7 +28,7 @@
         e.preventDefault()
         let user = this.children['username'];
         let pass = this.children['password'];
-        postAjax('login_parse.php', {"username":user.value, "password":pass.value, 'page': "register"}, function(data){
+        postAjax('assets/login_parse.php', {"username":user.value, "password":pass.value, 'page': "register"}, function(data){
             var data = JSON.parse(data);
             if (data.sucsess){
                 user.value = "";
@@ -49,7 +49,7 @@
         let ssn = this.children['ssn'];
         let name = this.children['name'];
         let email = this.children['email'];
-    	postAjax('register_parse.php', {"username":user.value, "password":pass.value, "ssn":ssn.value, "name":name.value, "email":email.value}, function (data) {
+    	postAjax('assets/register_parse.php', {"username":user.value, "password":pass.value, "ssn":ssn.value, "name":name.value, "email":email.value}, function (data) {
             //MSG Acount Created
             user.value = ""
             pass.value = ""
@@ -62,7 +62,7 @@
 
   });
 
- function postAjax(url, data, success) {
+function postAjax(url, data, success) {
     var params = typeof data == 'string' ? data : Object.keys(data).map(
             function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
         ).join('&');

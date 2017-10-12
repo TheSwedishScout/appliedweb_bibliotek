@@ -1,6 +1,6 @@
 <?php
 $page = (pathinfo(__file__)['filename']);
-include("head.php")
+	include("assets/head.php");
  ?>
 	<main class="float-p">
 		<div class="frontpage-card">
@@ -25,5 +25,5 @@ include("head.php")
 		</div>
 	</main>
  <?php
-	include("footer.php")
+    include("assets/footer.php")
  ?>

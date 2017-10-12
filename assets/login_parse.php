@@ -9,7 +9,10 @@ session_start();
 
 if (!isset($_SESSION['user_id'])){
     session_unset();
-    
+    $in_user_lvl = 0;
+    if (isset($_POST['user_lvl'])){
+        $in_user_lvl = test_input($_POST['user_lvl']);
+    }
     $pre_page = test_input($_POST['page']);
     $username = test_input($_POST['username']);
     $password = test_input($_POST['password']);
@@ -40,7 +43,7 @@ if (!isset($_SESSION['user_id'])){
                 //send to start peage
                 //header("Location: $pre_page");
                 //exit;
-                echo (json_encode(['sucsess'=> true, 'user_name' => $row['name']]));
+                echo (json_encode(['sucsess'=> true, 'user_name' => $row['name'], 'user_lvl' => $row['user_lvl']]));
             } else {
                 echo (json_encode(['sucsess'=> false, 'error' =>"username or password incorect"]));
                 

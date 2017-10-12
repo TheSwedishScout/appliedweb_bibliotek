@@ -4,8 +4,7 @@ for (var i = buttons.length - 1; i >= 0; i--) {
 }
 function reserv(e) {
 	e.target.value;
-	debugger;
-	postAjax("./reserv-book.php", {'book':e.target.value}, bookUppdated)
+	postAjax("./assets/reserv-book.php", {'book':e.target.value}, bookUppdated)
 
 }
 function bookUppdated(response) {

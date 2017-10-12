@@ -1,7 +1,7 @@
 <?php
 $page = (pathinfo(__file__)['filename']);
 
-	include("head.php")
+	include("assets/head.php");
  ?>
 	<main>
 		<img src="images/book.jpg">
@@ -19,5 +19,5 @@ $page = (pathinfo(__file__)['filename']);
 		</div>
 	</main>
 <?php
-	include("footer.php")
+    include("assets/footer.php");
  ?>

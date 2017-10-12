@@ -1,8 +1,8 @@
 <?php
 $page = (pathinfo(__file__)['filename']);
 
-	include("head.php");
- ?>
+	include("assets/head.php");
+?>
 	<main>
 		<div class="contact-card">
 			<img src="images/me.jpg">
@@ -19,5 +19,5 @@ $page = (pathinfo(__file__)['filename']);
 		</form>
 	</main>
 <?php
-	include("footer.php")
+    include("assets/footer.php");
  ?>

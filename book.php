@@ -1,7 +1,7 @@
 <?php
 	$page = (pathinfo(__file__)['filename']);
-	include("head.php");
-	include('function.php')
+	include("assets/head.php");
+	include('assets/function.php');
 ?>
 <main>
 	<?php
@@ -59,5 +59,5 @@
 </main>
 <script type="text/javascript" src="js/reserv-book.js"></script>
 <?php
-	include ('footer.php');
+    include("assets/footer.php");
 ?>

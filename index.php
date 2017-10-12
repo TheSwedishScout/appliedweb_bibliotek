@@ -1,7 +1,7 @@
 <?php
 $page = (pathinfo(__file__)['filename']);
-include("head.php");
-include("function.php");
+	include("assets/head.php");
+	include('assets/function.php');
  ?>
 	<main class="float-p">
 		<div class="frontpage-card">
@@ -17,5 +17,5 @@ include("function.php");
 		</div>
 	</main>
 <?php
-	include("footer.php")
+    include("assets/footer.php");
  ?>
